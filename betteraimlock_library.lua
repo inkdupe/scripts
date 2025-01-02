@@ -1,1 +1,164 @@
-local function obf_adjnqwidqwjhdpoq() local function obf_wrapperfunc(obf_arg) if obf_arg then if getgenv().Executed then return;else getgenv().Executed=true;end local RunService=game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\235\23\180\184\47\203\20\179\136\47","\74\185\98\218\235"));local Players=game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\154\199\61\62\28\184\216","\121\202\171\92\71"));local LocalPlayer=Players.LocalPlayer;local Camera=workspace.CurrentCamera;local Mouse=LocalPlayer:GetMouse();local TargetPlayer=nil;local Speeding=false;local Circling=false;local AntiLockEnabled=false;local GetClosestPlayer=function() local ClosestDistance=100000;local ClosestPlayer=nil;for _,Player in pairs(Players:GetPlayers()) do local FlatIdent_52901=0;local IsWhitelisted;while true do if (FlatIdent_52901==1) then if ( not IsWhitelisted and (Player.Name~=LocalPlayer.Name) and Player.Character and Player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\122\157\36\192\34\209\91\140\27\206\35\202\98\137\59\213","\190\50\232\73\161\76")) and Player.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\147\204\79\92\16\180\208\70","\126\219\185\34\61")) and (Player.Character.Humanoid.Health~=0) and (Player.Character.Humanoid.Health>getgenv().AimlockSettings.Target.MinHealth)) then local FlatIdent_2953F=0;local FlatIdent_8D327;local Root;local Visible;while true do if (FlatIdent_2953F==0) then FlatIdent_8D327=0;Root=nil;FlatIdent_2953F=1;end if (FlatIdent_2953F==1) then Visible=nil;while true do if (FlatIdent_8D327==0) then Root,Visible=Camera:WorldToScreenPoint(Player.Character.HumanoidRootPart.Position);if  not Visible then continue;end FlatIdent_8D327=1;end if (FlatIdent_8D327==1) then Root=(Vector2.new(Mouse.X,Mouse.Y) -Vector2.new(Root.X,Root.Y)).Magnitude;if (Root<ClosestDistance) then local FlatIdent_67C40=0;while true do if (FlatIdent_67C40==0) then ClosestPlayer=Player;ClosestDistance=Root;break;end end end break;end end break;end end end break;end if (FlatIdent_52901==0) then IsWhitelisted=false;for _,Name in ipairs(getgenv().AimlockSettings.Target.Whitelisted) do if (Player.Name==Name) then IsWhitelisted=true;break;end end FlatIdent_52901=1;end end end return ClosestPlayer;end;Mouse.KeyDown:Connect(function(Key) if (Key==getgenv().AimlockSettings.Aimlock.Keybind:lower()) then local FlatIdent_2661B=0;local FlatIdent_89ECE;while true do if (FlatIdent_2661B==0) then FlatIdent_89ECE=0;while true do if (FlatIdent_89ECE==1) then if TargetPlayer then local FlatIdent_475BC=0;local FlatIdent_1743D;while true do if (FlatIdent_475BC==0) then FlatIdent_1743D=0;while true do if (FlatIdent_1743D==0) then TargetPlayer.CharacterRemoving:Connect(function(Character) if (TargetPlayer and (Players:GetPlayerFromCharacter(Character)==TargetPlayer) and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\36\219\83\115\112\120\250\227","\135\108\174\62\18\30\23\147"))) then local FlatIdent_7366E=0;while true do if (0==FlatIdent_7366E) then if getgenv().AimlockSettings.Target.TargetDiesLockOff then TargetPlayer=nil;end if Circling then Camera.CameraSubject=LocalPlayer.Character.Humanoid;end break;end end end end);Players.PlayerRemoving:Connect(function(Player) if (Player==TargetPlayer) then TargetPlayer=nil;end end);break;end end break;end end end break;end if (FlatIdent_89ECE==0) then TargetPlayer=( not TargetPlayer and GetClosestPlayer()) or nil ;Circling= not TargetPlayer and false ;FlatIdent_89ECE=1;end end break;end end elseif (Key==getgenv().AimlockSettings.AntiLock.Keybind:lower()) then local FlatIdent_8199B=0;local FlatIdent_43862;while true do if (FlatIdent_8199B==0) then FlatIdent_43862=0;while true do if (0==FlatIdent_43862) then local FlatIdent_7DD24=0;while true do if (FlatIdent_7DD24==1) then FlatIdent_43862=1;break;end if (FlatIdent_7DD24==0) then AntiLockEnabled= not AntiLockEnabled;print(LUAOBFUSACTOR_DECRYPT_STR_0("\151\231\62\194\88\162\60\196\189\169\35\216","\167\214\137\74\171\120\206\83"),AntiLockEnabled);FlatIdent_7DD24=1;end end end if (FlatIdent_43862==1) then game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\185\229\60\110\253\181\157\249\49\88","\199\235\144\82\61\152")).Heartbeat:Connect(function() if  not AntiLockEnabled then return;end local HumanoidRootPart=LocalPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\47\3\180\42\9\25\176\47\53\25\182\63\55\23\171\63","\75\103\118\217"));if  not HumanoidRootPart then return;end local Velocity=HumanoidRootPart.Velocity;HumanoidRootPart.Velocity=getgenv().AimlockSettings.AntiLock.Position * 10 ;game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\245\65\126\39\188\12\209\93\115\17","\126\167\52\16\116\217")).RenderStepped:Wait();HumanoidRootPart.Velocity=Velocity;end);break;end end break;end end elseif (Key==getgenv().AimlockSettings.Target.TeleportKeybind:lower()) then if (TargetPlayer and TargetPlayer.Character and TargetPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\224\59\45\129\186\22\245\204\28\47\143\160\41\253\218\58","\156\168\78\64\224\212\121")) and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\47\251\168\207\9\225\172\202\53\225\170\218\55\239\183\218","\174\103\142\197"))) then LocalPlayer.Character.HumanoidRootPart.CFrame=TargetPlayer.Character.HumanoidRootPart.CFrame;end elseif (Key==getgenv().AimlockSettings.Speed.Keybind:lower()) then local FlatIdent_781F8=0;while true do if (FlatIdent_781F8==0) then Speeding= not Speeding;if LocalPlayer.Character then local FlatIdent_6FA1=0;local Humanoid;while true do if (FlatIdent_6FA1==1) then if Humanoid then Humanoid.WalkSpeed= not Speeding and game.StarterPlayer.CharacterWalkSpeed ;end break;end if (0==FlatIdent_6FA1) then local FlatIdent_A36C=0;while true do if (FlatIdent_A36C==0) then for _,part in LocalPlayer.Character:GetDescendants() do if part:IsA(LUAOBFUSACTOR_DECRYPT_STR_0("\116\41\76\61\21\95\234\66","\152\54\72\63\88\69\62")) then spawn(function() while Speeding do local FlatIdent_940A0=0;while true do if (FlatIdent_940A0==0) then part.CustomPhysicalProperties=PhysicalProperties.new(math.huge,math.huge,math.huge);wait();break;end end end end);end end Humanoid=LocalPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\252\209\227\93\218\203\231\88","\60\180\164\142"));FlatIdent_A36C=1;end if (FlatIdent_A36C==1) then FlatIdent_6FA1=1;break;end end end end end break;end end elseif (Key==getgenv().AimlockSettings.Circling.Keybind:lower()) then local FlatIdent_946F=0;while true do if (FlatIdent_946F==0) then Circling= not Circling;while Circling do local FlatIdent_49AED=0;while true do if (FlatIdent_49AED==0) then if (TargetPlayer and TargetPlayer.Character and TargetPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\112\75\8\40\41\226\27\92\108\10\38\51\221\19\74\74","\114\56\62\101\73\71\141")) and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\144\252\214\197\182\230\210\192\138\230\212\208\136\232\201\208","\164\216\137\187"))) then local FlatIdent_99389=0;local Offset;while true do if (FlatIdent_99389==1) then repeat Offset=Vector3.new(math.random( -getgenv().AimlockSettings.Circling.MaxRadius,getgenv().AimlockSettings.Circling.MaxRadius),getgenv().AimlockSettings.Circling.Height,math.random( -getgenv().AimlockSettings.Circling.MaxRadius,getgenv().AimlockSettings.Circling.MaxRadius));until Offset.Magnitude>=getgenv().AimlockSettings.Circling.MinRadius  LocalPlayer.Character.HumanoidRootPart.CFrame=TargetPlayer.Character.HumanoidRootPart.CFrame + Offset ;break;end if (FlatIdent_99389==0) then local FlatIdent_40CF=0;while true do if (FlatIdent_40CF==0) then Camera.CameraSubject=TargetPlayer.Character.Humanoid;Offset=nil;FlatIdent_40CF=1;end if (FlatIdent_40CF==1) then FlatIdent_99389=1;break;end end end end end wait(getgenv().AimlockSettings.Circling.Delay);break;end end end FlatIdent_946F=1;end if (FlatIdent_946F==1) then if (LocalPlayer.Character and LocalPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\250\243\60\179\168\241\2\214","\107\178\134\81\210\198\158"))) then local FlatIdent_99389=0;while true do if (FlatIdent_99389==0) then Camera.CameraSubject=LocalPlayer.Character.Humanoid;if (LocalPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\16\27\143\199\164\55\7\134\244\165\55\26\178\199\184\44","\202\88\110\226\166")) and TargetPlayer and TargetPlayer.Character and TargetPlayer.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\235\26\143\246\196\204\6\134\197\197\204\27\178\246\216\215","\170\163\111\226\151"))) then LocalPlayer.Character.HumanoidRootPart.CFrame=TargetPlayer.Character.HumanoidRootPart.CFrame;end break;end end end break;end end end end);RunService.RenderStepped:Connect(function() local FlatIdent_8CEDF=0;local Character;local Humanoid;while true do if (FlatIdent_8CEDF==1) then Humanoid=Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\57\37\191\57\64\56\32\21","\73\113\80\210\88\46\87"));if  not Humanoid then return;end FlatIdent_8CEDF=2;end if (FlatIdent_8CEDF==2) then if Speeding then Humanoid.WalkSpeed=getgenv().AimlockSettings.Speed.Value;end break;end if (FlatIdent_8CEDF==0) then if (TargetPlayer and TargetPlayer.Character) then local FlatIdent_E0D0=0;local FlatIdent_7A75F;local Hitpart;while true do if (FlatIdent_E0D0==0) then FlatIdent_7A75F=0;Hitpart=nil;FlatIdent_E0D0=1;end if (FlatIdent_E0D0==1) then while true do if (FlatIdent_7A75F==0) then Hitpart=TargetPlayer.Character:FindFirstChild(getgenv().AimlockSettings.Aimlock.Hitpart);if Hitpart then Camera.CFrame=CFrame.new(Camera.CFrame.Position,Hitpart.Position + (Hitpart.Velocity * Vector3.new(getgenv().AimlockSettings.Aimlock.Prediction.X,getgenv().AimlockSettings.Aimlock.Prediction.Y,getgenv().AimlockSettings.Aimlock.Prediction.X)) );end break;end end break;end end end Character=LocalPlayer.Character;FlatIdent_8CEDF=1;end end end);else local sdawdwqdq=obf_arg[1];end end if (obf_tonumber(obf_stringmatch(obf_stringmatch(({obf_pcall(obf_wrapperfunc,nil)})[2],":%d+:"),"%d+"))==1) then return obf_wrapperfunc({});else return obf_adjnqwidqwjhdpoq();end end return obf_adjnqwidqwjhdpoq();
+if getgenv().Executed then
+    return
+else
+    getgenv().Executed = true
+end
+
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+
+local LocalPlayer = Players.LocalPlayer
+local Camera = workspace.CurrentCamera
+local Mouse = LocalPlayer:GetMouse()
+
+local TargetPlayer = nil
+local Speeding = false
+local Circling = false
+local AntiLockEnabled = false
+
+local GetClosestPlayer = function()
+    local ClosestDistance = 100000
+    local ClosestPlayer = nil
+
+    for _, Player in pairs(Players:GetPlayers()) do
+        local IsWhitelisted = false
+        for _, Name in ipairs(getgenv().AimlockSettings.Target.Whitelisted) do
+            if Player.Name == Name then
+                IsWhitelisted = true
+                break
+            end
+        end
+        
+        if not IsWhitelisted and Player.Name ~= LocalPlayer.Name and Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") and Player.Character:FindFirstChild("Humanoid") and Player.Character.Humanoid.Health ~= 0 and Player.Character.Humanoid.Health > getgenv().AimlockSettings.Target.MinHealth then
+            local Root, Visible = Camera:WorldToScreenPoint(Player.Character.HumanoidRootPart.Position)
+            if not Visible then
+                continue
+            end
+            Root = (Vector2.new(Mouse.X, Mouse.Y) - Vector2.new(Root.X, Root.Y)).Magnitude
+            if Root < ClosestDistance then
+                ClosestPlayer = Player
+                ClosestDistance = Root
+            end
+        end
+    end
+    return ClosestPlayer
+end
+
+Mouse.KeyDown:Connect(function(Key)
+    if Key == getgenv().AimlockSettings.Aimlock.Keybind:lower() then
+        TargetPlayer = not TargetPlayer and GetClosestPlayer() or nil
+        
+        Circling = not TargetPlayer and false
+
+        if TargetPlayer then
+            TargetPlayer.CharacterRemoving:Connect(function(Character)
+                if TargetPlayer and Players:GetPlayerFromCharacter(Character) == TargetPlayer and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
+                    if getgenv().AimlockSettings.Target.TargetDiesLockOff then
+                        TargetPlayer = nil
+                    end
+                    if Circling then
+                        Camera.CameraSubject = LocalPlayer.Character.Humanoid
+                    end
+                end
+            end)
+            Players.PlayerRemoving:Connect(function(Player)
+                if Player == TargetPlayer then
+                    TargetPlayer = nil
+                end
+            end)
+        end
+
+    elseif Key == getgenv().AimlockSettings.AntiLock.Keybind:lower() then
+        AntiLockEnabled = not AntiLockEnabled
+        print("Anti lock is", AntiLockEnabled)
+
+        game:GetService("RunService").Heartbeat:Connect(function()
+            if not AntiLockEnabled then
+                return
+            end
+
+            local HumanoidRootPart = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if not HumanoidRootPart then return end
+            local Velocity = HumanoidRootPart.Velocity
+
+            HumanoidRootPart.Velocity = getgenv().AimlockSettings.AntiLock.Position * 10
+
+            game:GetService("RunService").RenderStepped:Wait()
+
+            HumanoidRootPart.Velocity = Velocity
+        end)
+
+    elseif Key == getgenv().AimlockSettings.Target.TeleportKeybind:lower() then
+        if TargetPlayer and TargetPlayer.Character and TargetPlayer.Character:FindFirstChild("HumanoidRootPart") and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            LocalPlayer.Character.HumanoidRootPart.CFrame = TargetPlayer.Character.HumanoidRootPart.CFrame
+        end
+
+    elseif Key == getgenv().AimlockSettings.Speed.Keybind:lower() then
+        Speeding = not Speeding
+
+        if LocalPlayer.Character then
+            for _, part in LocalPlayer.Character:GetDescendants() do
+                if part:IsA("BasePart") then
+                    spawn(function()
+                        while Speeding do
+                            part.CustomPhysicalProperties = PhysicalProperties.new(math.huge, math.huge, math.huge)
+                            wait()
+                        end
+                    end)
+                end
+            end
+            local Humanoid = LocalPlayer.Character:FindFirstChild("Humanoid")
+            if Humanoid then
+                Humanoid.WalkSpeed = not Speeding and game.StarterPlayer.CharacterWalkSpeed
+            end
+        end
+
+
+    elseif Key == getgenv().AimlockSettings.Circling.Keybind:lower() then
+        Circling = not Circling
+        
+        while Circling do
+            if TargetPlayer and TargetPlayer.Character and TargetPlayer.Character:FindFirstChild("HumanoidRootPart") and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                Camera.CameraSubject = TargetPlayer.Character.Humanoid
+                local Offset
+                repeat
+                    Offset = Vector3.new(
+                        math.random(-getgenv().AimlockSettings.Circling.MaxRadius, getgenv().AimlockSettings.Circling.MaxRadius),
+                        getgenv().AimlockSettings.Circling.Height,
+                        math.random(-getgenv().AimlockSettings.Circling.MaxRadius, getgenv().AimlockSettings.Circling.MaxRadius)
+                    )
+                until Offset.Magnitude >= getgenv().AimlockSettings.Circling.MinRadius
+                
+                LocalPlayer.Character.HumanoidRootPart.CFrame = TargetPlayer.Character.HumanoidRootPart.CFrame + Offset                
+            end
+            wait(getgenv().AimlockSettings.Circling.Delay)
+        end
+        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
+            Camera.CameraSubject = LocalPlayer.Character.Humanoid
+            if LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and TargetPlayer and TargetPlayer.Character and TargetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                LocalPlayer.Character.HumanoidRootPart.CFrame = TargetPlayer.Character.HumanoidRootPart.CFrame
+            end
+        end
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if TargetPlayer and TargetPlayer.Character then
+        local Hitpart = TargetPlayer.Character:FindFirstChild(getgenv().AimlockSettings.Aimlock.Hitpart)
+    
+        if Hitpart then
+            Camera.CFrame = CFrame.new(Camera.CFrame.Position, Hitpart.Position + Hitpart.Velocity * Vector3.new(getgenv().AimlockSettings.Aimlock.Prediction.X, getgenv().AimlockSettings.Aimlock.Prediction.Y, getgenv().AimlockSettings.Aimlock.Prediction.X))
+        end
+    end
+    
+    local Character = LocalPlayer.Character
+    local Humanoid = Character:FindFirstChild("Humanoid")
+    
+    if not Humanoid then
+        return
+    end
+
+    if Speeding then
+        Humanoid.WalkSpeed = getgenv().AimlockSettings.Speed.Value
+    end
+end)
