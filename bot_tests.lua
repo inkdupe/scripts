@@ -1,6 +1,7 @@
 getgenv().Information = {
     ["Commanders"] = {
         "inkduper",
+        "chineseobese",
     },
     ["AddedCommanders"] = {},
     Prefix = ".",
