@@ -17,10 +17,10 @@ local Following = nil
 
 local Disabled = false
 
-if getgenv().HasExecutedBotScript then
+if getgenv().ExecutedBotScript then
     return
 else
-    getgenv().HasExecutedBotScript = true
+    getgenv().ExecutedBotScript = true
 end
 
 getgenv().MainBot = nil
@@ -84,7 +84,7 @@ local function AddCommander(Player)
             if not Disabled and string.sub(Message, 1, #Prefix) == Prefix then
                 local Command = string.sub(Message, #Prefix + 1)
 
-                local Words = Command:split(" "):lower()
+                local Words = Command:lower():split(" ")
 
                 local FirstWord = Words[1]
                 local SecondWord = Words[2]
