@@ -17,13 +17,13 @@ game:GetService("RunService").RenderStepped:Connect(
             hue = 0
         end
         sine += 1
-        res1 = 0.4math.sin(sine/10)
-        res2 = 0.7math.cos(sine/11.5)
+        res1 = 0.4*math.sin(sine/10)
+        res2 = 0.7*math.cos(sine/11.5)
         CC.Saturation = 0.6 + math.random(1,2)
         CC.TintColor = Color3.fromHSV(hue/360, 1,1)
         CC.Brightness = math.random(0,2)
-        CC.Contrast = 3math.sin(sine/30)
-        Distortion.Level = 1math.cos(sine/5)
+        CC.Contrast = 3*math.sin(sine/30)
+        Distortion.Level = 1*math.cos(sine/5)
         Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, res2, res1, 0, 0, 0, 1)
     end
 )
