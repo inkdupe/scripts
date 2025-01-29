@@ -1,7 +1,7 @@
-res1 = 1
-res2 = 1
-sine = 0
-hue = 0
+local res1 = 1
+local res2 = 1
+local sine = 0
+local hue = 0
 local Sound = Instance.new('Sound', game:GetService('SoundService'))
 Sound.SoundId = 'rbxassetid://1835335514'
 Sound.Looped = true
