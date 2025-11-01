@@ -13,7 +13,11 @@ if not Trophy then
 
     Msg:Destroy()
 else
+    for _, v in pairs(workspace.Chests:GetChildren()) do
+        if not v:FindFirstChild("Touch") then continue end
+
+        firetouchinterest(HRP, v.Touch, 0)
+    end
+
     firetouchinterest(HRP, Trophy.Base1, 0)
-    task.wait()
-    firetouchinterest(HRP, Trophy.Base1, 1)
 end
